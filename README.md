@@ -33,8 +33,3 @@ License
 -------
 
 MIT
-
-Author Information
-------------------
-
-Ruslan Walch

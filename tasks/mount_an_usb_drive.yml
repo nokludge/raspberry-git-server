@@ -1,0 +1,20 @@
+---
+
+- name: get mounts
+  command: "blkid --list-one -t LABEL=GIT -o value"
+  register: mounts
+
+- set_fact:
+    disk_uuid: "{{ mounts.stdout_lines[1] }}"
+
+- name: creates directory
+  file:
+    path: /media/git
+    state: directory
+
+- name: Mount up device by UUID
+  mount:
+    name: /media/git
+    src: "UUID={{ disk_uuid }}"
+    fstype: ext4
+    state: mounted

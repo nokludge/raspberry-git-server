@@ -1,0 +1,4 @@
+---
+# defaults file for dietpi-git-server
+
+diskName: "GIT"

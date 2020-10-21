@@ -1,0 +1,20 @@
+---
+
+- name: add git user
+  user:
+    name: git
+    state: present
+
+- name: get gid of git user
+  command: id -g git
+  register: gid_output
+
+- name: get uid of git user
+  command: id -u git
+  register: uid_output
+
+- set_fact:
+    gid: "{{ gid_output.stdout }}"
+
+- set_fact:
+    uid: "{{ uid_output.stdout }}"

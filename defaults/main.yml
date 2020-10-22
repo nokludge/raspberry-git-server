@@ -2,3 +2,4 @@
 # defaults file for dietpi-git-server
 
 diskName: "GIT"
+user_groups: "git"

@@ -1,15 +1,15 @@
 ---
 # tasks file for dietpi-git-server
 
-#- include: git_user.yml
-#  #this include set these vars:
-#  # - gid
-#  # - uid
-#
-#- name: install git-core
-#  apt:
-#    name: "git-core"
-#    state: present
+- include: git_user.yml
+  #this include set these vars:
+  # - gid
+  # - uid
+
+- name: install git-core
+  apt:
+    name: "git-core"
+    state: present
 
 - include: mount_an_usb_drive.yml
   #this include set these vars:

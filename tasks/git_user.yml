@@ -3,6 +3,8 @@
 - name: add git user
   user:
     name: git
+    shell: /usr/bin/git-shell
+    groups: "{{ user_groups }}"
     state: present
 
 - name: get gid of git user

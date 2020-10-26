@@ -17,4 +17,5 @@
     name: /media/git
     src: "UUID={{ disk_uuid }}"
     fstype: ext4
+    opts: noauto,x-systemd.automount,x-systemd.idle-timeout=60,defaults
     state: mounted

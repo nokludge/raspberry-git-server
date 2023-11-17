@@ -1,4 +1,8 @@
 ---
+- name: "Ensure group {{ user_groups }} exists"
+  ansible.builtin.group:
+    name: "git"
+    state: present
 
 - name: add git user
   user:
@@ -6,6 +10,22 @@
     shell: /usr/bin/git-shell
     groups: "{{ user_groups }}"
     state: present
+
+- name: creates .ssh directory
+  file:
+    path: /home/git/.ssh
+    state: directory
+    owner: git
+    group: git
+    mode: '0700'
+
+- name: copy authorized_keys
+  ansible.builtin.copy:
+    src: "/home/pi/.ssh/authorized_keys"
+    dest: "/home/git/.ssh/authorized_keys"
+    owner: git
+    group: git
+    mode: '0600'
 
 - name: get gid of git user
   command: id -g git
